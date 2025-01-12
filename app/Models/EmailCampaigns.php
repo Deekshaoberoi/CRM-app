@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 
-class EmailCampaigns extends Model
+class EmailCampaign extends Model
 {
     use HasFactory , Notifiable , withData;
 
