@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Abbasudo\Purity\Traits\Filterable;
 use Abbasudo\Purity\Traits\Sortable;
 use Abbasudo\Purity\Traits\withData;
+use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Model
 {
-    use HasFactory,Filterable , Sortable , Notifiable , withData;
+    use Filterable,HasFactory , Notifiable , Sortable , withData;
 
     protected $fillable = [
         'name',
@@ -33,5 +34,15 @@ class User extends Model
             'password' => 'string',
             'phone' => 'string',
         ];
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+    protected static function newFactory(): Factory
+    {
+        return UserFactory::new();
     }
 }

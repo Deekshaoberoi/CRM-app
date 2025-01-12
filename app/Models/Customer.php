@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Abbasudo\Purity\Traits\Filterable;
-use Abbasudo\Purity\Traits\Sortable;
 use Abbasudo\Purity\Traits\withData;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
+use Database\Factories\CustomerFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Customer extends Model
 {
@@ -45,5 +45,15 @@ class Customer extends Model
             'country' => 'string',
             'postal_code' => 'string',
         ];
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+    protected static function newFactory()
+    {
+        return CustomerFactory::new();
     }
 }

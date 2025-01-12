@@ -7,6 +7,8 @@ use Abbasudo\Purity\Traits\Sortable;
 use Abbasudo\Purity\Traits\withData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Database\Factories\InteractionFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 
@@ -44,6 +46,11 @@ class Interaction extends Model
         ];
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
@@ -57,5 +64,20 @@ class Interaction extends Model
     public function lead(): BelongsTo
     {
         return $this->belongsTo(Lead::class);
+    }
+
+    public function assignedTo(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+    protected static function newFactory()
+    {
+        return InteractionFactory::new();
     }
 }

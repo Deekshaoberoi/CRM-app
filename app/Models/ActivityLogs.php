@@ -6,13 +6,14 @@ use Abbasudo\Purity\Traits\Filterable;
 use Abbasudo\Purity\Traits\Sortable;
 use Abbasudo\Purity\Traits\withData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 
 class ActivityLogs extends Model
 {
-    use Filterable , Sortable , HasFactory, Notifiable , withData;
+    use Filterable , HasFactory , Notifiable, Sortable , withData;
 
     protected $table = 'activity_logs';
 
@@ -44,5 +45,15 @@ class ActivityLogs extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+    protected static function newFactory()
+    {
+        return ActivityLogsFactory::new();
     }
 }

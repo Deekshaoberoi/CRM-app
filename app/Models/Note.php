@@ -5,13 +5,14 @@ namespace App\Models;
 use Abbasudo\Purity\Traits\Filterable;
 use Abbasudo\Purity\Traits\Sortable;
 use Abbasudo\Purity\Traits\withData;
+use Database\Factories\NoteFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Notifications\Notifiable;
 
-class Notes extends Model
+class Note extends Model
 {
     use Filterable ,HasFactory , Notifiable , Sortable , withData;
 
@@ -52,5 +53,15 @@ class Notes extends Model
     public function related(): MorphTo
     {
         return $this->morphTo('related');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+    protected static function newFactory(): Factory
+    {
+        return NoteFactory::new();
     }
 }

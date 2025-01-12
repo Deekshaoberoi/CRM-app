@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
+use Abbasudo\Purity\Traits\Sortable;
+use Abbasudo\Purity\Traits\withData;
+use Database\Factories\LeadFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
-use Abbasudo\Purity\Traits\withData;
-use Abbasudo\Purity\Traits\Filterable;
-use Abbasudo\Purity\Traits\Sortable;
 
-class Leads extends Model
+class Lead extends Model
 {
-    use HasFactory ,Filterable ,Sortable, Notifiable , withData;
+    use Filterable ,HasFactory ,Notifiable, Sortable , withData;
 
     protected $table = 'leads';
 
@@ -46,5 +48,20 @@ class Leads extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function assignedTo(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Factory
+    |--------------------------------------------------------------------------
+    */
+    protected static function newFactory()
+    {
+        return LeadFactory::new();
     }
 }
