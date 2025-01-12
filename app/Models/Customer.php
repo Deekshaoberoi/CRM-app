@@ -2,6 +2,13 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
+use Abbasudo\Purity\Traits\Sortable;
+use Abbasudo\Purity\Traits\withData;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Customer extends Model
 {
     use HasFactory , Notifiable , withData;

@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
+use Abbasudo\Purity\Traits\Sortable;
+use Abbasudo\Purity\Traits\withData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Interaction extends Model
 {
-    use HasFactory , Notifiable , withData;
+    use Filterable ,HasFactory ,Notifiable, Sortable , withData;
 
     protected $table = 'interactions';
 

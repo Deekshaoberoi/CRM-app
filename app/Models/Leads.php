@@ -3,10 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Notifications\Notifiable;
+use Abbasudo\Purity\Traits\withData;
+use Abbasudo\Purity\Traits\Filterable;
+use Abbasudo\Purity\Traits\Sortable;
 
 class Leads extends Model
 {
-    use HasFactory , Notifiable , withData;
+    use HasFactory ,Filterable ,Sortable, Notifiable , withData;
 
     protected $table = 'leads';
 

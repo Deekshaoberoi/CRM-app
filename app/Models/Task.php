@@ -2,9 +2,17 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\withData;
+use Abbasudo\Purity\Traits\Filterable;
+use Abbasudo\Purity\Traits\Sortable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Task extends Model
 {
-    use HasFactory , Notifiable , withData;
+    use HasFactory ,Filterable , Sortable , Notifiable , withData;
 
     protected $table = 'tasks';
 
@@ -41,7 +49,7 @@ class Task extends Model
     | Relations
     |--------------------------------------------------------------------------
     */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }

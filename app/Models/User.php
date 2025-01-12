@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Abbasudo\Purity\Traits\Filterable;
+use Abbasudo\Purity\Traits\Sortable;
+use Abbasudo\Purity\Traits\withData;
 
 class User extends Model
 {
-    use HasFactory, Notifiable , withData;
+    use HasFactory,Filterable , Sortable , Notifiable , withData;
 
     protected $fillable = [
         'name',
