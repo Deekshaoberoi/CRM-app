@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\ActivityLogData;
 use App\Repositories\ActivityLogRepository;
 use Illuminate\Support\Facades\Redirect;
-use App\Data\ActivityLogData;
 
 class ActivityLogController extends Controller
 {
@@ -29,9 +29,9 @@ class ActivityLogController extends Controller
 
     public function update(ActivityLogData $request, int $id)
     {
-        $this->activityLogRepository->updateActivityLog($request->validated(), $this->activityLogRepository->getActivityLogById($id));
+        $this->activityLogRepository->updateActivityLog($request->validated(),
+            $this->activityLogRepository->getActivityLogById($id));
 
         return Redirect::route('Activity-Logs.index');
     }
 }
-

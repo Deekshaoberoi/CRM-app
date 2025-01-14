@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\CustomerData;
 use App\Repositories\CustomerRepository;
 use Illuminate\Support\Facades\Redirect;
-use App\Data\CustomerData;
 
 class CustomerController extends Controller
 {
@@ -29,7 +29,8 @@ class CustomerController extends Controller
 
     public function update(CustomerData $request, int $id)
     {
-        $this->customerRepository->updateCustomer($request->validated(), $this->customerRepository->getCustomerById($id));
+        $this->customerRepository->updateCustomer($request->validated(),
+            $this->customerRepository->getCustomerById($id));
 
         return Redirect::route('customers.index');
     }

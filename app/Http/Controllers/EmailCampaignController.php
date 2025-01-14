@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\EmailCampaignData;
 use App\Repositories\EmailCampaignRepository;
 use Illuminate\Support\Facades\Redirect;
-use App\Data\EmailCampaignData;
 
 class EmailCampaignController extends Controller
 {
@@ -29,7 +29,8 @@ class EmailCampaignController extends Controller
 
     public function update(EmailCampaignData $request, int $id)
     {
-        $this->emailCampaignRepository->updateEmailCampaign($request->validated(), $this->emailCampaignRepository->getEmailCampaignById($id));
+        $this->emailCampaignRepository->updateEmailCampaign($request->validated(),
+            $this->emailCampaignRepository->getEmailCampaignById($id));
 
         return Redirect::route('Email-campaigns.index');
     }
